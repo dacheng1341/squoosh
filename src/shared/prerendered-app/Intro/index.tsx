@@ -23,28 +23,28 @@ import SlideOnScroll from './SlideOnScroll';
 
 const demos = [
   {
-    description: 'Large photo',
+    description: '大尺寸照片',
     size: '2.8MB',
     filename: 'photo.jpg',
     url: largePhoto,
     iconUrl: largePhotoIcon,
   },
   {
-    description: 'Artwork',
+    description: '艺术插画',
     size: '2.9MB',
     filename: 'art.jpg',
     url: artwork,
     iconUrl: artworkIcon,
   },
   {
-    description: 'Device screen',
+    description: '设备截图',
     size: '1.6MB',
     filename: 'pixel3.png',
     url: deviceScreen,
     iconUrl: deviceScreenIcon,
   },
   {
-    description: 'SVG icon',
+    description: 'SVG 图标',
     size: '13KB',
     filename: 'squoosh.svg',
     url: logo,
@@ -138,7 +138,7 @@ export default class Intro extends Component<Props, State> {
       this.props.onFile!(file);
     } catch (err) {
       this.setState({ fetchingDemoIndex: undefined });
-      this.props.showSnack!("Couldn't fetch demo image");
+      this.props.showSnack!('获取演示图片失败，请检查网络');
     }
   };
 
@@ -207,14 +207,14 @@ export default class Intro extends Component<Props, State> {
     try {
       clipboardItems = await navigator.clipboard.read();
     } catch (err) {
-      this.props.showSnack!(`No permission to access clipboard`);
+      this.props.showSnack!('无法访问剪贴板，请检查浏览器权限');
       return;
     }
 
     const blob = await getImageClipboardItem(clipboardItems);
 
     if (!blob) {
-      this.props.showSnack!(`No image found in the clipboard`);
+      this.props.showSnack!('剪贴板中没有找到图片');
       return;
     }
 
@@ -285,13 +285,13 @@ export default class Intro extends Component<Props, State> {
                 </svg>
               </button>
               <div>
-                <span class={style.dropText}>Drop </span>OR{' '}
+                <span class={style.dropText}>拖入 </span>或{' '}
                 {supportsClipboardAPI ? (
                   <button class={style.pasteBtn} onClick={this.onPasteClick}>
-                    Paste
+                    粘贴
                   </button>
                 ) : (
-                  'Paste'
+                  '粘贴'
                 )}
               </div>
             </div>
@@ -310,7 +310,7 @@ export default class Intro extends Component<Props, State> {
           </svg>
           <div class={style.contentPadding}>
             <p class={style.demoTitle}>
-              Or <strong>try one</strong> of these:
+              或 <strong>试试</strong> 这些演示图片：
             </p>
             <ul class={style.demos}>
               {demos.map((demo, i) => (
@@ -355,17 +355,17 @@ export default class Intro extends Component<Props, State> {
             <SlideOnScroll>
               <div class={style.infoContent}>
                 <div class={style.infoTextWrapper}>
-                  <h2 class={style.infoTitle}>Small</h2>
+                  <h2 class={style.infoTitle}>更小体积</h2>
                   <p class={style.infoCaption}>
-                    Smaller images mean faster load times. Squoosh can reduce
-                    file size and maintain high quality.
+                    图片越小，加载越快。Squoosh 能大幅缩减文件体积，
+                    同时保持高画质。
                   </p>
                 </div>
                 <div class={style.infoImgWrapper}>
                   <img
                     class={style.infoImg}
                     src={smallSectionAsset}
-                    alt="silhouette of a large 1.4 megabyte image shrunk into a smaller 80 kilobyte image"
+                    alt="一张 1.4MB 的大图被压缩成 80KB 小图的示意"
                     width="536"
                     height="522"
                   />
@@ -380,18 +380,17 @@ export default class Intro extends Component<Props, State> {
             <SlideOnScroll>
               <div class={style.infoContent}>
                 <div class={style.infoTextWrapper}>
-                  <h2 class={style.infoTitle}>Simple</h2>
+                  <h2 class={style.infoTitle}>操作简单</h2>
                   <p class={style.infoCaption}>
-                    Open your image, inspect the differences, then save
-                    instantly. Feeling adventurous? Adjust the settings for even
-                    smaller files.
+                    打开图片，对比效果，一键保存。
+                    想更进一步？调整参数可以压缩得更小。
                   </p>
                 </div>
                 <div class={style.infoImgWrapper}>
                   <img
                     class={style.infoImg}
                     src={simpleSectionAsset}
-                    alt="grid of multiple shrunk images displaying various options"
+                    alt="展示多种压缩选项的图片网格"
                     width="538"
                     height="384"
                   />
@@ -406,17 +405,17 @@ export default class Intro extends Component<Props, State> {
             <SlideOnScroll>
               <div class={style.infoContent}>
                 <div class={style.infoTextWrapper}>
-                  <h2 class={style.infoTitle}>Secure</h2>
+                  <h2 class={style.infoTitle}>安全私密</h2>
                   <p class={style.infoCaption}>
-                    Worried about privacy? Images never leave your device since
-                    Squoosh does all the work locally.
+                    担心隐私？放心，Squoosh 完全在本地处理图片，
+                    数据不会上传到任何服务器。
                   </p>
                 </div>
                 <div class={style.infoImgWrapper}>
                   <img
                     class={style.infoImg}
                     src={secureSectionAsset}
-                    alt="silhouette of a cloud with a 'no' symbol on top"
+                    alt="带有禁止符号的云图标，表示不上传数据"
                     width="498"
                     height="333"
                   />
@@ -440,14 +439,14 @@ export default class Intro extends Component<Props, State> {
                   class={style.footerLink}
                   href="https://github.com/GoogleChromeLabs/squoosh/blob/dev/README.md#privacy"
                 >
-                  Privacy
+                  隐私政策
                 </a>
                 <a
                   class={style.footerLinkWithLogo}
                   href="https://github.com/GoogleChromeLabs/squoosh"
                 >
                   <img src={githubLogo} alt="" width="10" height="10" />
-                  Source on Github
+                  GitHub 开源
                 </a>
               </footer>
             </div>
@@ -455,7 +454,7 @@ export default class Intro extends Component<Props, State> {
         </footer>
         {beforeInstallEvent && (
           <button class={style.installBtn} onClick={this.onInstallClick}>
-            Install
+            安装应用
           </button>
         )}
       </div>

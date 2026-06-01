@@ -73,6 +73,14 @@ const Index: FunctionalComponent<Props> = () => (
       />
     </head>
     <body>
+      <div style="width: 100%; background: #ffffff; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 30px; font-family: sans-serif; box-sizing: border-box; z-index: 9999; position: relative;">
+        <a href="https://dacbbox.com/" target="_blank" style="font-size: 15px; font-weight: bold; color: #1a202c; text-decoration: none;">
+            🏠 访问主站：大程开源百宝箱
+        </a>
+        <a href="https://zjz.dacbbox.com/" target="_blank" style="font-size: 15px; font-weight: bold; color: #0066cc; text-decoration: none;">
+            📸 极速 AI 证件照 (免费换底色) 👉
+        </a>
+      </div>
       <div id="app">
         <Intro />
         <noscript>
