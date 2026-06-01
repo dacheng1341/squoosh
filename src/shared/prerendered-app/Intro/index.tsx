@@ -435,19 +435,9 @@ export default class Intro extends Component<Props, State> {
             </svg>
             <div class={style.footerPadding}>
               <footer class={style.footerItems}>
-                <a
-                  class={style.footerLink}
-                  href="https://github.com/GoogleChromeLabs/squoosh/blob/dev/README.md#privacy"
-                >
-                  隐私政策
-                </a>
-                <a
-                  class={style.footerLinkWithLogo}
-                  href="https://github.com/GoogleChromeLabs/squoosh"
-                >
-                  <img src={githubLogo} alt="" width="10" height="10" />
-                  GitHub 开源
-                </a>
+                <span class={style.footerLink}>
+                  🔒 大程工具箱：纯本地浏览器运算，绝不上传您的任何图片与隐私数据。
+                </span>
               </footer>
             </div>
           </div>
