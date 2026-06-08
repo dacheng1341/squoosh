@@ -89,6 +89,8 @@ export default class Intro extends Component<Props, State> {
   private installingViaButton = false;
 
   componentDidMount() {
+    import('client/utils/analytics').then(({ refreshAds }) => refreshAds());
+
     // Listen for beforeinstallprompt events, indicating Squoosh is installable.
     window.addEventListener(
       'beforeinstallprompt',
@@ -122,6 +124,12 @@ export default class Intro extends Component<Props, State> {
     const fileInput = event.target as HTMLInputElement;
     if (!fileInput.files || fileInput.files.length === 0) return;
     const filesArray = Array.from(fileInput.files);
+    
+    // GA4 Tracking
+    import('client/utils/analytics').then(({ trackEvent }) => {
+      trackEvent('image_selected', { count: filesArray.length });
+    });
+
     this.fileInput!.value = '';
     if (this.props.onFiles) {
       this.props.onFiles(filesArray);
@@ -307,6 +315,17 @@ export default class Intro extends Component<Props, State> {
             </div>
           </div>
         </div>
+        {/* AdSense Placeholder */}
+        {!__PRERENDER__ && (
+          <div style={{ margin: '20px auto', width: '100%', maxWidth: '800px', textAlign: 'center', minHeight: '90px' }}>
+            <ins class="adsbygoogle"
+                 style={{ display: 'block' }}
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+          </div>
+        )}
         <div class={style.demosContainer}>
           <svg viewBox="0 0 1920 140" class={style.topWave}>
             <path

@@ -334,6 +334,7 @@ export default class Compress extends Component<Props, State> {
     this.queueUpdateImage({ immediate: true });
 
     import('../sw-bridge').then(({ mainAppLoaded }) => mainAppLoaded());
+    import('client/utils/analytics').then(({ refreshAds }) => refreshAds());
   }
 
   private onMobileWidthChange = () => {
@@ -1012,6 +1013,16 @@ export default class Compress extends Component<Props, State> {
             <div class={style.options2} key="options2">
               {options[1]}
               {results[1]}
+              {!__PRERENDER__ && (
+                <div style={{ marginTop: '20px', textAlign: 'center', minHeight: '100px' }}>
+                  <ins class="adsbygoogle"
+                       style={{ display: 'block' }}
+                       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                       data-ad-slot="XXXXXXXXXX"
+                       data-ad-format="auto"
+                       data-full-width-responsive="true"></ins>
+                </div>
+              )}
             </div>,
           ]
         )}

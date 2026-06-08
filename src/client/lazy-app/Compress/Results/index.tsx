@@ -51,10 +51,13 @@ export default class Results extends Component<Props, State> {
     const after = Math.round(this.props.imageFile!.size / 1024);
     const change = Math.round((after / before) * 1000);
 
-    ga('send', 'event', 'compression', 'download', {
-      metric1: before,
-      metric2: after,
-      metric3: change,
+    // GA4 Custom Event Tracking
+    import('client/utils/analytics').then(({ trackEvent }) => {
+      trackEvent('image_downloaded', {
+        before_kb: before,
+        after_kb: after,
+        ratio: change,
+      });
     });
   };
 

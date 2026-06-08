@@ -162,6 +162,11 @@ export default class App extends Component<Props, State> {
       isEditorOpen: location.pathname === ROUTE_EDITOR,
       isBatchEditorOpen: location.pathname === '/batch-editor'
     });
+    
+    // Google Analytics 4: Track Virtual Page View
+    import('client/utils/analytics').then(({ trackPageView }) => {
+      trackPageView(location.pathname);
+    });
   };
 
   private openEditor = () => {
@@ -170,6 +175,7 @@ export default class App extends Component<Props, State> {
     editorURL.pathname = ROUTE_EDITOR;
     history.pushState(null, '', editorURL.href);
     this.setState({ isEditorOpen: true, isBatchEditorOpen: false });
+    import('client/utils/analytics').then(({ trackPageView }) => trackPageView(editorURL.pathname));
   };
 
   private openBatchEditor = () => {
@@ -178,6 +184,7 @@ export default class App extends Component<Props, State> {
     editorURL.pathname = '/batch-editor';
     history.pushState(null, '', editorURL.href);
     this.setState({ isBatchEditorOpen: true, isEditorOpen: false });
+    import('client/utils/analytics').then(({ trackPageView }) => trackPageView(editorURL.pathname));
   };
 
   render(

@@ -276,6 +276,7 @@ export default class BatchCompress extends Component<Props, State> {
   };
 
   private downloadAllFiles = async () => {
+    import('client/utils/analytics').then(({ trackEvent }) => trackEvent('batch_downloaded', { count: this.state.jobs.length }));
     if ('showDirectoryPicker' in window) {
       try {
         const dirHandle = await (window as any).showDirectoryPicker();
@@ -321,6 +322,7 @@ export default class BatchCompress extends Component<Props, State> {
 
   componentDidMount() {
     this.startBatchProcessing();
+    import('client/utils/analytics').then(({ refreshAds }) => refreshAds());
   }
 
   render({ onBack }: Props, { jobs, processorState, encoderState, processing }: State) {
@@ -345,6 +347,15 @@ export default class BatchCompress extends Component<Props, State> {
               onProcessorOptionsChange={this.onProcessorOptionsChange}
               onEncoderOptionsChange={this.onEncoderOptionsChange}
             />
+            {/* AdSense Placeholder */}
+            <div style={{ marginTop: '20px', textAlign: 'center', minHeight: '250px' }}>
+              <ins class="adsbygoogle"
+                   style={{ display: 'block' }}
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+            </div>
           </div>
           <div class={style.list}>
             {jobs.map(job => (
