@@ -275,7 +275,38 @@ export default class BatchCompress extends Component<Props, State> {
     }
   };
 
-  private downloadAllFiles = () => {
+  private downloadAllFiles = async () => {
+    if ('showDirectoryPicker' in window) {
+      try {
+        const dirHandle = await (window as any).showDirectoryPicker();
+        for (const job of this.state.jobs) {
+          if (job.compressedFile) {
+            let name = job.compressedFile.name;
+            let fileHandle;
+            try {
+              fileHandle = await dirHandle.getFileHandle(name, { create: true });
+            } catch (e) {
+              const parts = name.split('.');
+              const ext = parts.pop();
+              name = `${parts.join('.')}_squoosh.${ext}`;
+              fileHandle = await dirHandle.getFileHandle(name, { create: true });
+            }
+            const writable = await fileHandle.createWritable();
+            await writable.write(job.compressedFile);
+            await writable.close();
+          }
+        }
+        this.props.showSnack('全部图片已保存到选定文件夹');
+        return;
+      } catch (err: any) {
+        if (err.name !== 'AbortError') {
+          this.props.showSnack('保存失败，可能未授予文件夹权限');
+        }
+        return;
+      }
+    }
+
+    this.props.showSnack('浏览器不支持直接保存文件夹，正在逐个下载...');
     for (const job of this.state.jobs) {
       if (job.compressedFile) {
         const url = URL.createObjectURL(job.compressedFile);

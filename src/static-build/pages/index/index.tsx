@@ -73,11 +73,11 @@ const Index: FunctionalComponent<Props> = () => (
       />
     </head>
     <body>
-      <div style="width: 100%; background: #ffffff; padding: 4px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: center; gap: 30px; font-family: sans-serif; box-sizing: border-box; z-index: 9999; position: relative;">
-        <a href="https://dacbbox.com/" target="_blank" style="font-size: 13px; font-weight: bold; color: #1a202c; text-decoration: none;">
+      <div id="dacbbox-banner" style="position: absolute; top: 0; left: 0; right: 0; height: 30px; background: #ffffff; padding: 0 10px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: center; align-items: center; gap: 15px; font-family: sans-serif; box-sizing: border-box; z-index: 9999; white-space: nowrap; overflow: hidden;">
+        <a href="https://dacbbox.com/" target="_blank" style="font-size: 12px; font-weight: bold; color: #1a202c; text-decoration: none; overflow: hidden; text-overflow: ellipsis;">
             🏠 访问主站：大程开源百宝箱
         </a>
-        <a href="https://zjz.dacbbox.com/" target="_blank" style="font-size: 13px; font-weight: bold; color: #0066cc; text-decoration: none;">
+        <a href="https://zjz.dacbbox.com/" target="_blank" style="font-size: 12px; font-weight: bold; color: #0066cc; text-decoration: none; overflow: hidden; text-overflow: ellipsis;">
             📸 极速 AI 证件照 (免费换底色) 👉
         </a>
       </div>
