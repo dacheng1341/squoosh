@@ -247,6 +247,9 @@ export default class Intro extends Component<Props, State> {
               class={style.blobCanvas}
             />
           )}
+          <button class={style.batchBtn} onClick={this.onOpenClick}>
+            ✨ 批量压缩 / ZIP
+          </button>
           <h1 class={style.logoContainer}>
             <img
               class={style.logo}

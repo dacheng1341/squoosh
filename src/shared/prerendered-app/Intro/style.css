@@ -281,6 +281,38 @@
   }
 }
 
+.batch-btn {
+  composes: unbutton from global;
+  position: absolute;
+  top: 50%;
+  right: 5vw;
+  transform: translateY(-50%);
+  background: var(--pink);
+  border-radius: 2em;
+  color: var(--white);
+  padding: 1em 2em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(255, 60, 140, 0.4);
+  transition: transform 0.2s;
+  z-index: 10;
+}
+.batch-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+@media (max-width: 1000px) {
+  .batch-btn {
+    top: auto;
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .batch-btn:hover {
+    transform: translateX(50%) scale(1.05);
+  }
+}
+
 .install-btn {
   composes: unbutton from global;
   position: absolute;
