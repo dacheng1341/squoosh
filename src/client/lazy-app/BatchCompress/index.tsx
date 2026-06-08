@@ -147,10 +147,10 @@ export default class BatchCompress extends Component<Props, State> {
 
   private onEncoderTypeChange = (newType: OutputType): void => {
     this.setState({
-      encoderState: newType === 'identity' ? undefined : {
+      encoderState: newType === 'identity' ? undefined : ({
         type: newType,
         options: encoderMap[newType].meta.defaultOptions,
-      },
+      } as any),
     }, this.startBatchProcessing);
   };
 

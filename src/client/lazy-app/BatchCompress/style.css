@@ -112,6 +112,10 @@
   margin: 0 5px;
 }
 
+.rate {
+  font-weight: 500;
+}
+
 .rateGood {
   color: #4caf50;
 }
