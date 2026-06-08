@@ -276,7 +276,7 @@ export default class BatchCompress extends Component<Props, State> {
   };
 
   private downloadAllFiles = async () => {
-    import('client/utils/analytics').then(({ trackEvent }) => trackEvent('batch_downloaded', { count: this.state.jobs.length }));
+    import('client/utils/analytics').then(({ trackEvent }) => trackEvent('batch-downloaded', { count: this.state.jobs.length }));
     if ('showDirectoryPicker' in window) {
       try {
         const dirHandle = await (window as any).showDirectoryPicker();

@@ -125,9 +125,9 @@ export default class Intro extends Component<Props, State> {
     if (!fileInput.files || fileInput.files.length === 0) return;
     const filesArray = Array.from(fileInput.files);
     
-    // GA4 Tracking
+    // GA4 Custom Event Tracking
     import('client/utils/analytics').then(({ trackEvent }) => {
-      trackEvent('image_selected', { count: filesArray.length });
+      trackEvent('image-selected', { count: filesArray.length });
     });
 
     this.fileInput!.value = '';

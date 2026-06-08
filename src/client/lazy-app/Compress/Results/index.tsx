@@ -53,7 +53,7 @@ export default class Results extends Component<Props, State> {
 
     // GA4 Custom Event Tracking
     import('client/utils/analytics').then(({ trackEvent }) => {
-      trackEvent('image_downloaded', {
+      trackEvent('image-downloaded', {
         before_kb: before,
         after_kb: after,
         ratio: change,
