@@ -1,43 +1,46 @@
 /**
- * Type declarations for Google Analytics and Google AdSense
+ * Type declarations for Google Analytics, Zaraz and Google AdSense
  */
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    zaraz?: {
+      track: (eventName: string, properties?: Record<string, any>) => void;
+    };
     adsbygoogle: any[];
   }
 }
 
 /**
- * Tracks a custom event in GA4
+ * Tracks a custom event using Cloudflare Zaraz
  * @param eventName The name of the event
  * @param eventParams Additional parameters for the event
  */
 export function trackEvent(eventName: string, eventParams?: Record<string, any>) {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.zaraz) {
     try {
-      window.gtag('event', eventName, eventParams);
+      window.zaraz.track(eventName, eventParams);
     } catch (e) {
-      console.warn('GA tracking failed', e);
+      console.warn('Zaraz tracking failed', e);
     }
+  } else {
+    console.warn('Zaraz not found, would track:', eventName, eventParams);
   }
 }
 
 /**
- * Tracks a page view (useful for SPAs on route change)
+ * Tracks a page view (useful for SPAs on route change) via Zaraz
  * @param pagePath The virtual page path, e.g. '/editor'
  */
 export function trackPageView(pagePath: string) {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.zaraz) {
     try {
-      window.gtag('event', 'page_view', {
+      window.zaraz.track('Page View', {
         page_path: pagePath,
         page_title: document.title,
         page_location: window.location.href,
       });
     } catch (e) {
-      console.warn('GA pageview tracking failed', e);
+      console.warn('Zaraz pageview tracking failed', e);
     }
   }
 }

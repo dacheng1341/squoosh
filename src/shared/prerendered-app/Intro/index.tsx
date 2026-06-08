@@ -454,6 +454,28 @@ export default class Intro extends Component<Props, State> {
           </div>
         </section>
 
+        <section class={style.info}>
+          <div class={style.infoContainer} style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', color: 'var(--text, #333)' }}>
+            <h2 style={{ fontSize: '1.8rem', marginBottom: '20px', color: 'var(--primary, #ff3385)' }}>什么是纯本地无损图片压缩？</h2>
+            <p style={{ lineHeight: '1.6', marginBottom: '20px' }}>
+              在传统的图片压缩网站中，您需要将图片上传到远端服务器，服务器处理完后再下载到您的电脑中。这不仅受制于网络速度，而且存在极大的隐私泄露风险。
+              <strong>Squoosh 采用了革命性的 WebAssembly (WASM) 技术</strong>，将原本在服务器上运行的图像处理算法，直接搬到了您的浏览器中运行。
+              这意味着，您的图片<strong>永远不会离开您的设备</strong>，所有的压缩计算都在您的本地内存中瞬间完成，这不仅快如闪电，更提供了 100% 的绝对隐私保护。
+            </p>
+            <h3 style={{ fontSize: '1.4rem', marginBottom: '15px' }}>新一代格式 WebP 与 AVIF 的优势</h3>
+            <p style={{ lineHeight: '1.6', marginBottom: '20px' }}>
+              为什么我们压缩出来的图片又小又清晰？除了传统的 JPEG 和 PNG 优化器，我们还内置了 Google 和各大科技巨头主推的下一代图像编码格式：<strong>WebP</strong> 和 <strong>AVIF</strong>。
+              相比于传统的 JPEG，WebP 可以将图片体积再缩小约 30%，而基于 AV1 视频编码架构的 AVIF 格式，甚至能在保持同等画质的前提下，将体积缩减到原本的 50% 以下！
+              非常适合博客站长、前端开发者和有批量处理需求的设计师使用。
+            </p>
+            <h3 style={{ fontSize: '1.4rem', marginBottom: '15px' }}>我们支持哪些进阶功能？</h3>
+            <p style={{ lineHeight: '1.6', marginBottom: '40px' }}>
+              除了基础的格式转换，您还可以自由调节图片的压缩率 (Quality)、平滑度 (Smoothing)，甚至可以改变图片的颜色通道。我们特有的<strong>分屏实时对比功能</strong>，让您可以在保存前直观地查看“压缩前”与“压缩后”的每一个像素差异。
+              如果您有大量图片，我们也提供强大的<strong>批量压缩与打包下载</strong>功能，让您一次性完成工作流。
+            </p>
+          </div>
+        </section>
+
         <footer class={style.footer}>
           <div class={style.footerContainer}>
             <svg viewBox="0 0 1920 79" class={style.topWave}>

@@ -63,21 +63,7 @@ const Index: FunctionalComponent<Props> = () => (
       <meta name="theme-color" content="#ff3385" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
-
-      {/* Google Analytics 4 */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X1FGW7TGJ"></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1X1FGW7TGJ', {
-              send_page_view: false // We will handle page views manually for SPA
-            });
-          `,
-        }}
-      />
+      {/* Google Analytics 4 (由 Cloudflare Zaraz 接管，此处已移除以防止双重挂载) */}
 
       {/* Google AdSense (预留，等待申请后替换 ca-pub-ID) */}
       {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossOrigin="anonymous"></script> */}
